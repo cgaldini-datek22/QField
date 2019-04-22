@@ -41,7 +41,7 @@ class ReferencingFeatureListModel : public QAbstractItemModel
       DisplayString = Qt::UserRole,
       ReferencingFeature,
       NmReferencedFeature,
-      AssociatedDisplayString
+      NmDisplayString
     };
 
     QHash<int, QByteArray> roleNames() const override;
@@ -144,7 +144,7 @@ class ReferencingFeatureListModel : public QAbstractItemModel
 
     //! Checks if the parent pk(s) is not null
     bool checkParentPrimaries();
-    QString associatedDisplayString( QgsFeatureId referencingFeatureId ) const;
+    QString nmDisplayString( QgsFeatureId referencingFeatureId ) const;
 };
 
 #endif // REFERENCINGFEATURELISTMODEL_H

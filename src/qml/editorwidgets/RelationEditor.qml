@@ -73,7 +73,7 @@ Rectangle{
 
                 contentItem: Rectangle {
                     anchors.fill: parent
-                    color: parent.enabled ? associatedRelationId === '' ? 'black' : 'blue' : 'grey'
+                    color: parent.enabled ? nmRelationId === '' ? 'black' : 'blue' : 'grey'
                     Image {
                       anchors.fill: parent
                       anchors.margins: 4 * dp
@@ -120,7 +120,7 @@ Rectangle{
             anchors { leftMargin: 10 * dp ; left: parent.left; right: deleteButton.left; verticalCenter: parent.verticalCenter }
             font.bold: true
             color: readOnly ? 'grey' : 'black'
-            text: { text: model.displayString + ' ' + model.associatedDisplayString }
+            text: { text: model.displayString + ' ' + model.nmDisplayString }
           }
 
           MouseArea {
@@ -128,8 +128,8 @@ Rectangle{
 
             onClicked: {
                 embeddedFeatureForm.state = !readOnly ? 'Edit' : 'ReadOnly'
-                embeddedFeatureForm.relatedFeature = associatedRelationId === '' ? model.referencingFeature : model.associatedReferencedFeature
-                embeddedFeatureForm.relatedLayer = associatedRelationId === '' ? relationEditorModel.relation.referencingLayer : relationEditorModel.associatedRelation.referencedLayer
+                embeddedFeatureForm.relatedFeature = nmRelationId === '' ? model.referencingFeature : model.nmReferencedFeature
+                embeddedFeatureForm.relatedLayer = nmRelationId === '' ? relationEditorModel.relation.referencingLayer : relationEditorModel.nmRelation.referencedLayer
                 embeddedFeatureForm.active = true
             }
           }
@@ -148,7 +148,7 @@ Rectangle{
 
                 contentItem: Rectangle {
                     anchors.fill: parent
-                    color: associatedRelationId === '' ? 'black' : 'blue'
+                    color: nmRelationId === '' ? 'black' : 'blue'
                     Image {
                       anchors.fill: parent
                       anchors.margins: 4 * dp
