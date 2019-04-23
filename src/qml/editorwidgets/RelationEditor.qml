@@ -75,7 +75,7 @@ Rectangle{
 
                 contentItem: Rectangle {
                     anchors.fill: parent
-                    color: parent.enabled ? nmRelationId === '' ? 'black' : 'blue' : 'grey'
+                    color: parent.enabled ? nmRelationId ? 'blue' : 'black' : 'grey'
                     Image {
                       anchors.fill: parent
                       anchors.margins: 4 * dp
@@ -122,7 +122,7 @@ Rectangle{
             anchors { leftMargin: 10 * dp ; left: parent.left; right: deleteButton.left; verticalCenter: parent.verticalCenter }
             font.bold: true
             color: readOnly ? 'grey' : 'black'
-            text: { text: nmRelationId === '' ? model.displayString : model.nmDisplayString }
+            text: { text: nmRelationId ? model.nmDisplayString : model.displayString }
           }
 
           MouseArea {
@@ -130,8 +130,8 @@ Rectangle{
 
             onClicked: {
                 embeddedFeatureForm.state = !readOnly ? 'Edit' : 'ReadOnly'
-                embeddedFeatureForm.relatedFeature = nmRelationId === '' ? model.referencingFeature : model.nmReferencedFeature
-                embeddedFeatureForm.relatedLayer = nmRelationId === '' ? relationEditorModel.relation.referencingLayer : relationEditorModel.nmRelation.referencedLayer
+                embeddedFeatureForm.relatedFeature = nmRelationId ? model.nmReferencedFeature : model.referencingFeature
+                embeddedFeatureForm.relatedLayer = nmRelationId ?  relationEditorModel.nmRelation.referencedLayer : relationEditorModel.relation.referencingLayer
                 embeddedFeatureForm.active = true
             }
           }
@@ -150,7 +150,7 @@ Rectangle{
 
                 contentItem: Rectangle {
                     anchors.fill: parent
-                    color: nmRelationId === '' ? 'black' : 'blue'
+                    color: nmRelationId ? 'blue' : 'black'
                     Image {
                       anchors.fill: parent
                       anchors.margins: 4 * dp
